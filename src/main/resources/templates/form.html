@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Formulaire</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" href="/css/formstyle.css">
+</head>
+<body>
+ <h5 th:text="${#authentication.getPrincipal().getFirstName()} +' '+ ${#authentication.getPrincipal().getLastName()} + ' '+'rôle :'+${#authentication.getPrincipal().getRole()}"></h5>
+	<h1>Ajouter un logement</h1>
+	
+	<div>
+	<!-- productForm /formAddProduct -->
+      <form action="#" th:object="${produit}" th:action="@{/showproduct}" method="post" >
+          <input type="hidden" name="productId" th:value="1" th:field="*{productId}"/>
+          <p>Type de bien: <input type="text" name="typeProperty" th:field="*{typeProperty}"/></p>
+          <p>prix: <input type="number" name="price" th:field="*{price}"/></p>
+          <p>Adresse: <input type="text" name="adress" th:field="*{adress}"/></p>
+          <p>Pour  <input type="number" name="nbPers" th:field="*{nbPers}"/> nombre(s) de personne(s)</p>
+          <p>Date début: <input type="date" name="beginDate" th:field="*{beginDate}"/></p>
+          <p>Date fin: <input type="date" name="endDate" th:field="*{endDate}"/></p>
+          <input type="submit" value="ajouter"/>
+     </form>
+     
+    <!-- getProductId() 
+	getTypeProperty() 
+	getPrice() 
+	getAdress()
+	getNbPers()
+	isAvailable() 
+	getBeginDate()
+	getEndDate() 
+	getOwner() 
+	getRenter() -->
+    
+   </div>
+   <a th:href="@{/}"><button>retour</button></a>
+</body>
+</html>

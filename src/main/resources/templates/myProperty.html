@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Mes logements</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css"href="/css/buildingtable.css">
+        </head>
+    <body>
+    <h5 th:text="${#authentication.getPrincipal().getFirstName()} +' '+ ${#authentication.getPrincipal().getLastName()} + ' '+'rôle :'+${#authentication.getPrincipal().getRole()}"></h5>
+        <h2>Liste des Logements dont je suis propriétaire</h2>
+
+        <table id="customers">
+            <tr>
+                <th>Id</th>
+                <th>typeDebien</th>
+                <th>price</th>
+                <th>adresse</th>
+                <th>nombre de personne</th>
+                <th>statut</th>
+                
+            </tr>
+            <tr th:each="product : ${#authentication.getPrincipal().getMyProperty()}">
+                 <td>
+                    <a th:href="@{'/showOne'(id=${product.getProductId()})}" th:text="${product.getProductId()}"></a>
+                  </td>
+                 <td th:text="${product.getTypeProperty()}"></td>
+                 <td th:text="${product.getPrice()+' € '}"></td>
+                 <td th:text="${product.getAdress()}"></td>
+                 <td th:text="${product.getNbPers()}"></td>
+                 <td th:switch="${product.isAvailable()}">
+                    <span th:case="true">Libre</span>
+                    <span th:case="false">Loué</span>
+                 </td>
+                 
+            </tr> 
+        </table>
+     
+	<!-- getTypeProperty() 
+	getPrice() 
+	getAdress()
+	getNbPers()
+	isAvailable() 
+	getBeginDate()
+	getEndDate() 
+	getOwner() 
+	getRenter() -->
+        <a th:href="@{/}"><button>retour</button></a>
+    </body>
+</html>

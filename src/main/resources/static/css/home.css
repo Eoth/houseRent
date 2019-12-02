@@ -1,0 +1,16 @@
+a{
+	text-decoration:none;
+	background-color: #4CAF50;
+	color: white;
+    width: 25%;
+    padding: 20px;
+    margin: 20px;
+    border: 1px #ccc;
+    border-radius: 4px;
+}
+
+a:hover {
+  text-decoration:none;
+	background-color: skyblue;
+	color: white;
+}

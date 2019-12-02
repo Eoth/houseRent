@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Mes logements loués</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css"href="/css/buildingtable.css">
+        </head>
+    <body>
+    <h5 th:text="${#authentication.getPrincipal().getFirstName()} +' '+ ${#authentication.getPrincipal().getLastName()} + ' '+'rôle :'+${#authentication.getPrincipal().getRole()}"></h5>
+        <h2>Mes logements que je loue</h2>
+
+        <table id="customers">
+            <tr>
+                
+                <th>typeDebien</th>
+                <th>price</th>
+                <th>adresse</th>
+                <th>nombre de personne</th>
+                
+            </tr>
+            <tr th:each="product : ${#authentication.getPrincipal().getMyRentHouse()}">
+                 <td th:text="${product.getTypeProperty()}"></td>
+                 <td th:text="${product.getPrice()+' € '}"></td>
+                 <td th:text="${product.getAdress()}"></td>
+                 <td th:text="${product.getNbPers()}"></td>
+                 
+            </tr> 
+        </table>
+     
+	<!-- getTypeProperty() 
+	getPrice() 
+	getAdress()
+	getNbPers()
+	isAvailable() 
+	getBeginDate()
+	getEndDate() 
+	getOwner() 
+	getRenter() -->
+        <a th:href="@{/}"><button>retour</button></a>
+    </body>
+</html>

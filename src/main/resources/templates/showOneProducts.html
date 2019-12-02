@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+    <head>
+        <title>Produits</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css"href="/css/buildingtable.css">
+        </head>
+    <body>
+   <h5 th:text="${#authentication.getPrincipal().getFirstName()} +' '+ ${#authentication.getPrincipal().getLastName()} + ' '+'rôle :'+${#authentication.getPrincipal().getRole()}"></h5>
+        <h2>Le logement</h2>
+
+        <table id="customers">
+            <tr>
+                <th>Id</th>
+                <th>typeDebien</th>
+                <th>price</th>
+                <th>adresse</th>
+                <th>nombre de personne</th>
+                <th>dispo à partir du</th>
+                
+            </tr>
+            <tr >
+                 <td th:text="${product.getProductId()}"></td>
+                 <td th:text="${product.getTypeProperty()}"></td>
+                 <td th:text="${product.getPrice()+' € '}"></td>
+                 <td  th:text="${product.getAdress()}"></td>
+                 <td th:text="${product.getNbPers()}"></td>
+                 <td th:text="${product.getBeginDate()}"></td>
+            </tr> 
+        </table>
+        <a th:href="@{/showproduct}"><button>retour</button></a> 
+        <!-- <a sec:authorize="hasRole('ADMIN')" th:href="@{'/deleteOne'(id=${product.getId()})}"><button>supprimer</button></a> -->
+        <a th:href="@{'/reservation'(id=${#authentication.getPrincipal().getUserId()},id1=${product.getProductId()})}" th:if="${#authentication.getPrincipal().getRole().equals('USER')}"><button>Envoyer une demande de location</button></a>
+        
+        <!-- <div th:if="${request.send}">
+            <h1>Demande envoyé.</h1>
+        </div> -->
+    </body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+    <head>
+        <title>Menu</title>     
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" type="text/css" href="/css/home.css">
+    </head>
+    <body>
+        <h5 th:text="${#authentication.getPrincipal().getFirstName()} +' '+ ${#authentication.getPrincipal().getLastName()} + ' '+'rôle :'+${#authentication.getPrincipal().getRole()}"></h5>
+        <h1>MENU</h1>
+        <a  th:href="@{'/showproduct'(id=${#authentication.getPrincipal().getUserId()})}">Montrer la liste des biens</a>
+        <!-- Le menu pour les admin -->
+        <span th:if="${#authentication.getPrincipal().getRole().equals('ADMIN')}">
+           <a  th:href="@{/formAddProduct}" >ajouter un bien immobilier</a>
+           <a  th:href="@{/myProperty}">Mes biens mise en location</a>
+           <a  th:href="@{'/myHouseReq'(id=${#authentication.getPrincipal().getUserId()})}" >Gérer les demandes</a>
+        </span>
+        <!-- Le menu pour les users -->
+        <span th:if="${#authentication.getPrincipal().getRole().equals('USER')}">
+           <a  th:href="@{/myRentHouse}">Loctaire de logements</a> 
+           <a  th:href="@{'/myHouseRenter'(id=${#authentication.getPrincipal().getUserId()})}">mes demandes</a>
+        </span>
+        <a  style="background-color:red"th:href="@{/logout}">deconnexion</a>
+        
+        <!-- <h2>Welcome</h2>
+        <p>Spring Security Thymeleaf tutorial</p>
+        <div >Text visible to user.</div>
+        <div sec:authorize="hasRole('ADMIN')">Text visible to admin.</div>
+        <div sec:authorize="isAuthenticated()">
+           Text visible only to authenticated users.
+        </div> -->
+    </body>
+</html>
