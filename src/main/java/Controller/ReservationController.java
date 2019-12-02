@@ -105,7 +105,7 @@ public class ReservationController {
 		for(Product produit : user.getMyProperty()) {
 			if (produit.getRes()!=null){
 				Reservation rese = reservationService.findByReservationId(produit.getRes().getResId());
-			    if(rese.getRealEstate()==produit && produit.isAvailable()==true)
+			    if(rese.getRealEstate()==produit && produit.isAvailable()==true )
 			     {
 				   res.add(rese);
 			      }	

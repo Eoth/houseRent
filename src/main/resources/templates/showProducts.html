@@ -9,7 +9,7 @@
     <body>
     <h5 th:text="${#authentication.getPrincipal().getFirstName()} +' '+ ${#authentication.getPrincipal().getLastName()} + ' '+'rôle :'+${#authentication.getPrincipal().getRole()}"></h5>
         <h2>Liste des Logements Disponible</h2>
-
+        <h5>Si connecter en tant user, cliquer l'ID de la maison dont vous voulez faire une demande de location</h5>
         <table id="customers">
             <tr>
                 <th>Id</th>

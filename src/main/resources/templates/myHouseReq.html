@@ -9,6 +9,7 @@
     <body>
     <h5 th:text="${#authentication.getPrincipal().getFirstName()} +' '+ ${#authentication.getPrincipal().getLastName()} + ' '+'rôle :'+${#authentication.getPrincipal().getRole()}"></h5>
         <h2>Liste de mes demandes</h2>
+        <h5>Pour choisir à qui Louer, cliquer sur le nom de la personne dans la case "Choisir à qui loués"</h5>
 
         <table id="customers">
             <tr>
