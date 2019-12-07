@@ -37,7 +37,6 @@ public class ReservationController {
 		Product product = productService.findByProductId(id1);// le logement demandé
 		List<Reservation> allRes = reservationService.findAllReservation();//liste de tous les logements présent dans la base de donnée
 		List<User> liste = new ArrayList<User>();
-		System.out.println(allRes.get(0).getResId());
 		
 		/* Parcours des listes des reservations pour voir si le logement n'est pas déja crée dans reservation*/
 		for(Reservation res : allRes) {

@@ -22,6 +22,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Entity
 @Table(name = "PRODUCT")
 public class Product {
+	
 	@Id 
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int productId;

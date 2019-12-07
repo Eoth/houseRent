@@ -11,8 +11,8 @@
 	
 	<div>
 	<!-- productForm /formAddProduct -->
-      <form action="#" th:object="${produit}" th:action="@{/showproduct}" method="post" >
-          <input type="hidden" name="productId" th:value="1" th:field="*{productId}"/>
+      <form action="#" th:object="${produit}" th:action="@{'/showproduct'(id=${#authentication.getPrincipal().getUserId()})}" method="post" >
+          <!-- <input type="hidden" name="productId" th:value="1" th:field="*{productId}"/> -->
           <p>Type de bien: <input type="text" name="typeProperty" th:field="*{typeProperty}"/></p>
           <p>prix: <input type="number" name="price" th:field="*{price}"/></p>
           <p>Adresse: <input type="text" name="adress" th:field="*{adress}"/></p>

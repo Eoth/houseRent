@@ -61,7 +61,8 @@ public class ProductController {
     public String formOfProduct(Model model) {
 		User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		if(user.getUsername()!=null) {
-			model.addAttribute("produit",new Product());
+			Product initProd =  new Product();
+			model.addAttribute("produit",initProd);
 			return "form";
 		}
 		return "/";
