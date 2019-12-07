@@ -8,4 +8,4 @@ ou en tant que  user ou locataire username : user et password : user
 
 Je n'est pas pas gérer le fait  q'un seul utilisateur puisse avoir le rôle d'admin et user en même temps.
 
-Il se peut que l'application ne démarre pas lorsque la base de donnée est en cours d'utilisation
+Il se peut que l'application ne démarre pas lorsque la base de donnée est en cours d'utilisation donc arrêter la base de donnée avant de lancer l'éxécution
